@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.*;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.By;
 
 public class FunctionalTest {
 
@@ -31,11 +32,15 @@ public class FunctionalTest {
 	@Test
     public void testHomepage() throws Exception {
         driver.get("https://www.meetup.com/fr-FR/");
-		assertEquals(driver.getTitle(), "Partagez vos passions | Meetup");
-		// TODO
-		// To Be Completed By Coders From Coding Factory
-    }
 
+        // n°1 : le titre de la page d'acceuil doit être 
+		assertEquals(driver.getTitle(), "Partagez vos passions | Meetup");
+    
+
+        // n°2: la description de la page d'acceuil doit être 
+
+        assertEquals(driver.findElement(By.name("description")).getAttribute("content"), "Partagez vos passions et faites bouger votre ville ! Meetup vous aide à rencontrer des personnes près de chez vous, autour de vos centres dintérêt.");    
+    }
     // Test de la Story n ...
     // TODO
     // To Be Completed By Coders From Coding Factory

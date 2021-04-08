@@ -54,6 +54,6 @@ public class EnemyTest {
     @Test 
     public void testEnemyTakeDamage() throws Exception {
         enemy.takeDamage(3);
-        assertThat(hero.getHp(),allOf(greaterThan(17), lessThan(21)));
+        assertThat(hero.getHp(),allOf(greaterThan(12), lessThan(15)));
     }
 }
