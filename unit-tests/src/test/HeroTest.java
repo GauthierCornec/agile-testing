@@ -10,9 +10,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import codingfactory.rpgconsole.hero.Hero;
+import codingfactory.rpgconsole.enemy.Enemy;
 
 public class HeroTest {
 
+	Enemy enemy;
 	Hero hero;
 
 	@BeforeClass
@@ -28,6 +30,7 @@ public class HeroTest {
 	@Before
 	public void setUp() throws Exception {
 		hero = new Hero("Jaina Portvaillant");
+		enemy = new Enemy("hello", 1);
 		System.out.println("Avant un test");
 	}
 
@@ -36,10 +39,6 @@ public class HeroTest {
 		System.out.println("Après un test");
 	}
 
-	@Test
-	public void testHeroLevelUp() throws Exception {
-		// TODO
-	}
 
 	@Test
 	public void testHeroProperties() throws Exception {
@@ -47,4 +46,31 @@ public class HeroTest {
         assertThat(hero, hasProperty("name", is("Jaina Portvaillant")));
 	}
 
+	@Test
+	public void testHeroGetHp() throws Exception {
+		assertThat(hero.getHp(), is (20));
+	}
+
+	@Test 
+	public void testHeroGetLevel() throws Exception {
+		assertThat(hero.getLevel(), is (1));
+	}
+
+	@Test
+	public void testHeroLevelUp() throws Exception {
+		hero.levelUp();
+		assertThat(hero.getLevel(), is (2));
+	}
+
+	@Test
+	public void testHeroAtk() throws Exception{
+		hero.attack(enemy);
+		assertThat(enemy.getHp(), allOf(greaterThan(10), lessThan(14)));
+	}
+
+	@Test
+	public void testHeroTakeDamage() throws Exception {
+		hero.takeDamage(8);
+		assertThat(hero.getHp(), is (12));
+	}
 }
