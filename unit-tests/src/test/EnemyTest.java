@@ -43,6 +43,8 @@ public class EnemyTest {
     public void testEnemyProperties() throws Exception {
         assertThat(enemy, hasProperty("name"));
         assertThat(enemy, hasProperty("name", is("Hello")));
+        assertThat(enemy, hasProperty ("hp"));
+        assertThat(enemy, hasProperty("hp", is (15)));
     }
 
     @Test  
@@ -54,6 +56,6 @@ public class EnemyTest {
     @Test 
     public void testEnemyTakeDamage() throws Exception {
         enemy.takeDamage(3);
-        assertThat(hero.getHp(),allOf(greaterThan(12), lessThan(15)));
+        assertThat(enemy.getHp(),allOf(greaterThan(11), lessThan(15)));
     }
 }
